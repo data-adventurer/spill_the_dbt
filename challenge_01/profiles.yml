@@ -1,6 +1,0 @@
-challenge_01:
-  target: dev
-  outputs:
-    dev:
-      type: duckdb
-      path: "ch01_data/lego.db"
