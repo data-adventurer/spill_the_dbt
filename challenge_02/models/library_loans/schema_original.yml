@@ -1,0 +1,62 @@
+# version 2:
+
+# sources:
+#   - name: library
+#     schema: main
+#     tables:
+#       - name: books_factual
+#         columns:
+#           - name: book_id
+#             tests:
+#               - not_null
+#               - unique
+#           - name: location
+#           - name: book_name
+#       - name: books_fictional
+#         columns:
+#           - name: book_id
+#             tests:
+#               - not_null
+#               - unique
+#           - name: location
+#           - name: book_name
+#       - name: customers_with_late_fees
+#         columns:
+#           - name: member_name
+#           - name: late_books
+#           - name: discount_applied
+#           - name: fee_to_pay
+#       - name: loans
+#         columns:
+#           - name: loan_id
+#             tests:
+#               - not_null
+#           - name: book_id
+#             tests:
+#               - not_null
+#               - relationships:
+#                   to: source('library', 'books_fictional')
+#                   field: book_id
+#               - relationships:
+#                   to: source('library', 'books_factual')
+#                   field: book_id
+#           - name: member_id
+#             tests:
+#               - not_null
+#               - relationships:
+#                   to: source('library', 'members')
+#                   field: member_id
+#           - name: in_date
+#           - name: out_date
+#           - name: late_fee
+#       - name: members
+#         columns:
+#           - name: member_id
+#             tests:
+#               - not_null
+#           - name: membership_tier
+#             test:
+#               - accepted_values:
+#                   values: ["Bronze", "Silver", "Gold"]
+#           - name: discount_rate
+#           - name: member_name
